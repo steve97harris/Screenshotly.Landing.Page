@@ -1,0 +1,31 @@
+# HTML to Image/PDF API
+
+High-performance API for converting URLs or HTML to PNG, JPG, and PDF. 
+Convert any URL or raw HTML into a pixel-perfect PNG, JPEG, or PDF with a single API call. Screenshotly runs a real Chromium browser on every request — no headless quirks, no rendering shortcuts.
+
+## Key Features
+Website screenshot API — capture any public URL as PNG or JPEG
+HTML to image — render raw HTML strings directly to PNG or JPEG
+HTML to PDF — convert HTML to PDF with A4/Letter page sizes, portrait or landscape
+URL to PDF — generate PDFs from any live webpage
+Full-page screenshot — capture the entire scrollable page, not just the viewport
+Custom viewport — set width and height to simulate any device or resolution
+Wait for element — pass a CSS selector and Screenshotly waits until it appears before capturing
+JPEG quality control — tune file size vs quality with a 1–100 quality setting
+Synchronous mode — result returned inline in the HTTP response (up to 30s)
+Async job queue — submit a job, get a job ID back immediately, poll or receive a webhook when done
+Webhook delivery — POST the finished file URL to your endpoint automatically
+Presigned download URLs — results stored securely in cloud storage with time-limited download links
+
+## Common Use Cases
+Automated website screenshot monitoring
+HTML invoice / report to PDF generation
+Open Graph image generation from HTML templates
+Web archiving and page snapshots
+Visual regression testing pipelines
+Thumbnail generation for URL previews
+Proof-of-delivery screenshots for ad campaigns
+No-code automation workflows (Zapier, Make, n8n)
+
+## Links
+- Documentation, Demo & Keys: https://rapidapi.com/stharris97/api/screenshotly1
