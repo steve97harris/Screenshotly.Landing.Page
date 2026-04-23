@@ -3,29 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SnapAPI | URL to PDF & PNG</title>
+    <title>Screenshotly — URL & HTML to Image/PDF API</title>
+    <meta name="description" content="Convert any URL or raw HTML to PNG, JPEG, WebP, or PDF with a single API call. Powered by real Chromium. Available on RapidAPI.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Snap<span>API</span></h1>
-        <p>Convert any URL or HTML to PDF/PNG with full JS hydration.</p>
-        <a href="YOUR_RAPID_API_URL" class="btn">Get API Key</a>
-    </header>
 
-    <section class="features">
-        <div class="feature">
-            <h3>🚀 Fast & Hydrated</h3>
-            <p>We wait for React/Vue components to load before capturing.</p>
-        </div>
-        <div class="feature">
-            <h3>📄 PDF & Images</h3>
-            <p>High-resolution outputs for invoices, screenshots, and more.</p>
+<nav>
+    <div class="inner">
+        <span class="logo">Screenshot<span>ly</span></span>
+        <a href="https://rapidapi.com/stharris97/api/screenshotly1" class="btn btn-sm" target="_blank" rel="noopener">Get API Key</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <h1>URL &amp; HTML to<br><span>Image or PDF</span></h1>
+    <p>Convert any URL or raw HTML to PNG, JPEG, WebP, or PDF with a single API call.<br>Powered by real Chromium — full JS execution, no rendering shortcuts.</p>
+    <div class="hero-ctas">
+        <a href="https://rapidapi.com/stharris97/api/screenshotly1" class="btn btn-primary" target="_blank" rel="noopener">Get API Key on RapidAPI &rarr;</a>
+        <a href="#endpoints" class="btn btn-ghost">View Endpoints</a>
+    </div>
+    <div class="code-block">
+        <span class="code-label">Quick start</span>
+        <pre><code>curl -X POST https://screenshotly1.p.rapidapi.com/v1/screenshots \
+  -H "X-RapidAPI-Key: &lt;YOUR_KEY&gt;" \
+  -H "X-RapidAPI-Host: screenshotly1.p.rapidapi.com" \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://example.com","format":"png","fullPage":true}'</code></pre>
+    </div>
+</div>
+
+<main>
+
+    <section id="features">
+        <h2>Everything you need to capture the web</h2>
+        <p class="sub">From single screenshots to bulk PDF generation — one API, all formats.</p>
+        <div class="grid-3">
+            <div class="card">
+                <div class="icon">&#x1F4F8;</div>
+                <h3>Screenshot any URL</h3>
+                <p>Capture any public URL as PNG, JPEG, or WebP. Set viewport width and height to simulate any device.</p>
+            </div>
+            <div class="card">
+                <div class="icon">&#x1F4C4;</div>
+                <h3>HTML to PDF</h3>
+                <p>Render raw HTML to pixel-perfect PDFs. A4, Letter, Legal page sizes — portrait or landscape.</p>
+            </div>
+            <div class="card">
+                <div class="icon">&#x26A1;</div>
+                <h3>Full JS Execution</h3>
+                <p>Real Chromium on every request. React, Vue, and Angular apps fully hydrated before capture.</p>
+            </div>
+            <div class="card">
+                <div class="icon">&#x1F504;</div>
+                <h3>Sync &amp; Async Modes</h3>
+                <p>Get results inline in the same request (sync), or fire-and-forget with job IDs and polling (async).</p>
+            </div>
+            <div class="card">
+                <div class="icon">&#x1FAA9;</div>
+                <h3>Webhook Delivery</h3>
+                <p>Pass a <code>webhookUrl</code> and receive a POST when the job completes. Available on paid plans.</p>
+            </div>
+            <div class="card">
+                <div class="icon">&#x1F4CF;</div>
+                <h3>Full-Page Captures</h3>
+                <p>Capture the entire scrollable page. Use <code>waitForSelector</code> to wait for any CSS element before shooting.</p>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p><a href="llms.txt">LLM Friendly Version</a> | Built for Developers</p>
-    </footer>
+    <section id="endpoints">
+        <h2>API Reference</h2>
+        <p class="sub">Base URL: <code>https://screenshotly1.p.rapidapi.com</code> &mdash; authenticate with your <code>X-RapidAPI-Key</code> header.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge post">POST</span></td>
+                        <td><code>/v1/screenshots</code></td>
+                        <td>Sync capture &mdash; returns result inline, or a job ID if still processing after 30s</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge post">POST</span></td>
+                        <td><code>/v1/jobs</code></td>
+                        <td>Async capture &mdash; enqueues immediately and returns a job ID for polling</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge get">GET</span></td>
+                        <td><code>/v1/jobs/{id}</code></td>
+                        <td>Poll a job by ID; returns status and a presigned download URL when complete</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge get">GET</span></td>
+                        <td><code>/v1/jobs</code></td>
+                        <td>List your jobs with pagination (<code>page</code>, <code>pageSize</code>)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge get">GET</span></td>
+                        <td><code>/v1/account</code></td>
+                        <td>View your plan tier, requests used this month, and account details</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Request Parameters</h3>
+        <div class="params">
+            <div class="param">
+                <div class="param-name"><code>url</code> <span>string</span></div>
+                <p>Public URL to capture (HTTP/HTTPS). Either <code>url</code> or <code>html</code> is required.</p>
+            </div>
+            <div class="param">
+                <div class="param-name"><code>html</code> <span>string</span></div>
+                <p>Raw HTML string to render. Alternative to <code>url</code>.</p>
+            </div>
+            <div class="param">
+                <div class="param-name"><code>format</code> <span>enum</span></div>
+                <p><code>png</code> &middot; <code>jpeg</code> &middot; <code>webp</code> &middot; <code>pdf</code>. Default: <code>png</code>.</p>
+            </div>
+            <div class="param">
+                <div class="param-name"><code>width</code> / <code>height</code> <span>integer</span></div>
+                <p>Viewport size in pixels. Range: 100&ndash;3840 &times; 100&ndash;2160. Default: 1280 &times; 800.</p>
+            </div>
+            <div class="param">
+                <div class="param-name"><code>fullPage</code> <span>boolean</span></div>
+                <p>Capture the full scrollable page, not just the visible viewport. Default: <code>false</code>.</p>
+            </div>
+            <div class="param">
+                <div class="param-name"><code>waitForSelector</code> <span>string</span></div>
+                <p>CSS selector to wait for before the capture is taken.</p>
+            </div>
+            <div class="param">
+                <div class="param-name"><code>waitMs</code> <span>integer</span></div>
+                <p>Additional wait time in ms after page load (0&ndash;60,000).</p>
+            </div>
+            <div class="param">
+                <div class="param-name"><code>webhookUrl</code> <span>string</span></div>
+                <p>POST the result here when complete. Paid plans only.</p>
+            </div>
+            <div class="param">
+                <div class="param-name"><code>quality</code> <span>integer</span></div>
+                <p>JPEG/WebP quality 1&ndash;100. Ignored for PNG and PDF. Default: 90.</p>
+            </div>
+            <div class="param">
+                <div class="param-name"><code>pdfPageSize</code> <span>string</span></div>
+                <p>PDF page size: <code>A4</code>, <code>Letter</code>, <code>Legal</code>, etc. PDF format only.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <h2>Plans</h2>
+        <p class="sub">All billing is handled by RapidAPI. Subscribe once and start using the API immediately.</p>
+        <div class="plans">
+            <div class="plan">
+                <h3>Free</h3>
+                <p class="plan-rate">10 req / min</p>
+                <ul>
+                    <li>100 requests / month</li>
+                    <li>PNG, JPEG, WebP</li>
+                    <li>Sync &amp; async modes</li>
+                    <li class="no">PDF &mdash; not included</li>
+                    <li class="no">Webhooks &mdash; not included</li>
+                </ul>
+            </div>
+            <div class="plan">
+                <h3>Starter</h3>
+                <p class="plan-rate">60 req / min</p>
+                <ul>
+                    <li>2,000 requests / month</li>
+                    <li>PNG, JPEG, WebP</li>
+                    <li>PDF exports</li>
+                    <li>Webhook delivery</li>
+                    <li>Sync &amp; async modes</li>
+                </ul>
+            </div>
+            <div class="plan">
+                <h3>Growth</h3>
+                <p class="plan-rate">300 req / min</p>
+                <ul>
+                    <li>10,000 requests / month</li>
+                    <li>PNG, JPEG, WebP</li>
+                    <li>PDF exports</li>
+                    <li>Webhook delivery</li>
+                    <li>Sync &amp; async modes</li>
+                </ul>
+            </div>
+            <div class="plan">
+                <h3>Pro</h3>
+                <p class="plan-rate">1,000 req / min</p>
+                <ul>
+                    <li>50,000 requests / month</li>
+                    <li>PNG, JPEG, WebP</li>
+                    <li>PDF exports</li>
+                    <li>Webhook delivery</li>
+                    <li>Sync &amp; async modes</li>
+                </ul>
+            </div>
+        </div>
+        <a href="https://rapidapi.com/stharris97/api/screenshotly1" class="btn btn-primary" target="_blank" rel="noopener">Subscribe on RapidAPI &rarr;</a>
+    </section>
+
+</main>
+
+<footer>
+    <span class="logo">Screenshot<span>ly</span></span>
+    <p>
+        <a href="llms.txt">LLM-Friendly Docs</a>
+        &middot;
+        <a href="https://rapidapi.com/stharris97/api/screenshotly1" target="_blank" rel="noopener">RapidAPI Listing</a>
+    </p>
+</footer>
+
 </body>
 </html>
